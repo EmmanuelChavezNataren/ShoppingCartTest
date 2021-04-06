@@ -3,7 +3,7 @@
     <name>ShoppingCartTest</name>
     <description>Test app for virket box vacancy challenge</description>
     <author email="emmanuel.chavez.condor@gmail.com">Prueba Emmanuel Chavez</author>
-    <content original-src="index.html" src="http://192.168.100.16:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

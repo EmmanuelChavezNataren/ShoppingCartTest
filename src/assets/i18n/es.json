@@ -21,6 +21,9 @@
     "TOTAL": "Total",
     "REVIEWS": "Reseñas",
     "ADD_CART": "Agregar al carrito",
-    "COLORS": "Colores"
+    "COLORS": "Colores",
+    "DESCRIPTION": "Descripción",
+    "ADD_CART_MESSAGE": "Producto agregado correctamente",
+    "DISCOUNT": "Descuento"
 
 }

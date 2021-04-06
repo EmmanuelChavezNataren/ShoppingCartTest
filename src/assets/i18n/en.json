@@ -21,5 +21,8 @@
     "TOTAL": "Total",
     "REVIEWS": "Reviews",
     "ADD_CART": "Agregar al carrito",
-    "COLORS": "Colors"
+    "COLORS": "Colors",
+    "DESCRIPTION": "Description",
+    "ADD_CART_MESSAGE": "Product added successfully",
+    "DISCOUNT": "Discpunt"
 }

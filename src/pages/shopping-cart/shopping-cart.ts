@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Cart } from '../../dto/request-response/cart-dto';
+import { ProductData } from '../../dto/request-response/product-dto';
 import { ConstantsProvider } from '../../providers/constants/constants';
 import { ApiInteractionProvider } from '../../providers/services/api-interaction';
 import { UtilitiesProvider } from '../../providers/utilities/utilities';
@@ -21,34 +22,68 @@ export class ShoppingCartPage {
   readonly CLASS_NAME = 'ShoppingCartPage';
   public shoppingCartList: Cart = new Cart();
   public isOpenInfoPayment: boolean = true;
+  public subtotal: number = 0;
+  public shipping: number = 0;
+  public discount: number = 0;
+  public total: number = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private api: ApiInteractionProvider,
-    private utilities: UtilitiesProvider) {  
-      localStorage.setItem('CLASS_NAME', this.CLASS_NAME);
-      this.init();  
+    private utilities: UtilitiesProvider) {
   }
 
-  ionViewDidLeave(){
+
+  ionViewWillEnter() {
+    localStorage.setItem('CLASS_NAME', this.CLASS_NAME);
+    if (!this.utilities.isNull(localStorage.getItem('shoppingCartList'))) {
+      this.shoppingCartList = JSON.parse(localStorage.getItem('shoppingCartList'));
+      this.calculateAmounts();
+    } else {
+      this.init();
+    }
+  }
+
+  ionViewDidLeave() {
     this.utilities.hideLoader();
   }
 
-  
-  async init() {    
+
+  async init() {
     let promises: any = [
-      this.api.getShoppingCart()      
+      this.api.getShoppingCart()
     ];
 
     try {
       let results = await Promise.all(promises);
       this.shoppingCartList = results[0] as Cart;
       localStorage.setItem('shoppingCartList', JSON.stringify(this.shoppingCartList));
-      console.log('this.shoppingCartList ' + JSON.stringify(this.shoppingCartList));            
+      this.calculateAmounts();
     } catch (_err) {
       this.utilities.hideLoader(() => {
         console.error(_err);
-      });      
+      });
     }
+
+  }
+
+  /**
+   * M&eacute;todo que realiza los calculos correspondientes al pago
+   * Con base a los productos agregados al carrito
+   * Subtotal: Suma de todos los precios de los productos
+   * Shipping: Costo del envio por cada 500 se suman 25 al envio
+   * Discount: Descuento que se realiza al costo total
+   * Total: Pago total aplicando el descuento
+   */
+  calculateAmounts() {
+    this.shoppingCartList.data.products.forEach((product: ProductData) => {
+      this.subtotal = this.subtotal + +product.product_price;
+      if(!this.utilities.isNull(product.discount) && +product.discount > 0){
+        this.discount = this.discount + +product.discount;
+      }      
+    });
+    let subtotalCalShipping: number = Math.trunc((this.subtotal / 500));
+    this.shipping = 25 * subtotalCalShipping;
+    this.total = (this.subtotal + this.shipping) - this.discount;
 
   }
 

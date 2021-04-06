@@ -6,15 +6,15 @@ page-product-detail-modal {
   .item-product_img {
     background-image: url(../../assets/imgs/polygon.png);
     background-position: center;
-    background-size: 70%;
+    background-size: 80%;
     background-repeat: no-repeat;
     background-color: transparent;
-    bottom: 35%;
+    bottom: 5%;
   }
 
   .item-product_img img {
     transform: rotate(25deg);
-    max-width: 50%;
+    max-width: 60%;
   }
 
   .item-product_img div div ion-label {
@@ -29,20 +29,21 @@ page-product-detail-modal {
     div.scroll-content {
       margin-top: 40px !important;
       padding: 16px 0px;
+      overflow-y: hidden !important;
     }
   }
 
-  .col-product-price{
-    color: map-get($colors, primary );
+  .col-product-price {
+    color: map-get($colors, primary);
     text-align: end;
   }
 
   .title-brand-detail {
     margin-top: 70%;
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-weight: 500;
     font-size: 20px;
-    color: map-get($colors, text-color-3 );    
+    color: map-get($colors, text-color-3);
   }
 
   .card-footer-prod-detail {
@@ -56,5 +57,81 @@ page-product-detail-modal {
     margin: 0;
     height: 100%;
     border-radius: 50px 50px 0px 0px;
+    padding-top: 0;
+    font-size: 14px;
   }
+
+  .card-details-sections-text {
+    font-family: "Poppins";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 40px;
+    white-space: pre-wrap;
+  }
+
+  .card-details-radio {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+  }
+
+  .radio-checked {
+    border: 2px solid #ffffff !important;
+    box-sizing: border-box !important;
+    width: 25px !important;
+    height: 25px !important;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  .radio .radio-icon {
+    width: 25px;
+    height: 25px;
+    border-color: transparent;
+  }
+
+  .radio .radio-inner {
+    width: 17px;
+    height: 17px;
+    background-color: transparent;
+  }
+
+  .card-details-text {
+    font-family: "Poppins";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    white-space: pre-wrap;
+    color: map-get($colors, text-color-5);
+  }
+
+  .card-footer-prod-detail ion-card ion-card-header ion-item div.item-inner {
+    padding: 0 !important;
+    div {
+      ion-label {
+        margin-right: 0 !important;
+      }
+    }
+  }
+
+  .cart-btn {
+    position: relative;
+    width: 50px;
+    top: 1px;
+    right: 1px;
+    overflow: visible!important;
+    font-size: 100%;
+ }
+ 
+ .cart-badge {
+    background-color: #14E80F !important;
+    color: #FFFFFF;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    border-radius: 100%;
+    z-index: 100;
+    width: 17px;
+    height: 17px;
+    padding: 3px 0px !important;
+ }
 }

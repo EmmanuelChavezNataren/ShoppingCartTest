@@ -6,7 +6,7 @@
 -->
 <ion-content class="shopping-cart-content" style="padding: 16px 0px;">
   <ion-grid fixed no-padding>
-    <ion-row class="title-section">
+    <ion-row class="title-section" style="margin-bottom: 15px;">
       <ion-col style="padding: 0px 16px !important;">
         <ion-label class="title-section-shopping-card" no-margin padding-top>{{'SHOPPING_CART_LBL' | translate}}          
         </ion-label>
@@ -62,17 +62,22 @@
 
             <ion-item>
               <ion-label class="shopping-cart-info-pay-subtext" no-margin item-start>{{'SUBTOTAL' | translate}}</ion-label>
-              <ion-label class="shopping-cart-info-pay-amounts" no-margin item-end>{{this.shoppingCartList.data.subtotal | currency}}</ion-label>
+              <ion-label class="shopping-cart-info-pay-amounts" no-margin item-end>{{this.subtotal | currency}}</ion-label>
             </ion-item>
 
             <ion-item>
               <ion-label class="shopping-cart-info-pay-subtext" no-margin item-start>{{'SHIPPING' | translate}}</ion-label>
-              <ion-label class="shopping-cart-info-pay-amounts" no-margin item-end>{{this.shoppingCartList.data.shipping | currency}}</ion-label>
+              <ion-label class="shopping-cart-info-pay-amounts" no-margin item-end>{{this.shipping | currency}}</ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label class="shopping-cart-info-pay-subtext" no-margin item-start>{{'DISCOUNT' | translate}}</ion-label>
+              <ion-label class="shopping-cart-info-pay-amounts" no-margin item-end>{{this.discount | currency}}</ion-label>
             </ion-item>
             
             <ion-item no-lines>
               <ion-label no-margin item-start class="shopping-cart-info-pay-text" style="padding: 0px !important;">{{'TOTAL' | translate}}</ion-label>
-              <ion-label class="shopping-cart-info-pay-amounts" no-margin item-end>{{this.shoppingCartList.data.subtotal | currency}}</ion-label>
+              <ion-label class="shopping-cart-info-pay-amounts" no-margin item-end>{{this.total | currency}}</ion-label>
             </ion-item>
           </ion-card-header>          
         </ion-card>   

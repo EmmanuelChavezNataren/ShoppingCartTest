@@ -119,6 +119,9 @@ page-shopping-cart {
   }
 
   ion-list {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 310px;
     ion-item.item{
       background-color: map-get($colors, background-color-1) !important;
     }

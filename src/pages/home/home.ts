@@ -24,15 +24,18 @@ export class HomePage {
     private utilities: UtilitiesProvider,
     private api: ApiInteractionProvider
   ) {
+  }
+
+  ionViewWillEnter() {
     localStorage.setItem('CLASS_NAME', this.CLASS_NAME);
-    if(!this.utilities.isNull(localStorage.getItem('shoppingCartList'))){
+    if (!this.utilities.isNull(localStorage.getItem('shoppingCartList'))) {
       this.shoppingCartList = JSON.parse(localStorage.getItem('shoppingCartList'));
     }
-        
+
     this.init();
   }
 
-  ionViewDidLeave(){
+  ionViewDidLeave() {
     this.utilities.hideLoader();
   }
 
@@ -51,7 +54,7 @@ export class HomePage {
     } catch (_err) {
       this.utilities.hideLoader(() => {
         console.error(_err);
-      });      
+      });
     }
 
   }

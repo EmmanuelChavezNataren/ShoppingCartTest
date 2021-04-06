@@ -23,7 +23,7 @@ export class UtilitiesProvider {
   readonly CLASS_NAME: "UtilitiesProvider";
   private loading: any;
   private loaderTimeout: number;
-  private dataError: DataError = new DataError(); 
+  private dataError: DataError = new DataError();
 
   constructor(
     private network: Network,
@@ -33,24 +33,24 @@ export class UtilitiesProvider {
     private alertCtrl: AlertController,
     private emailComposer: EmailComposer,
     private file: File,
-    public modal: ModalController) {    
+    public modal: ModalController) {
   }
 
-    /**
-   *  M&eacute;todo para el uso de cambio de idioma.
-   */
-     translate(key: string, params?: Object): string {
-      let value: string = undefined;
-      this.translateService.get(key, params).subscribe((trlValue) => {
-        value = trlValue;
-      }, (error) => {
-        console.error(JSON.stringify(error));
-      }
-        , () => {
-          value = value == key ? undefined : value;
-        })
-      return value;
+  /**
+ *  M&eacute;todo para el uso de cambio de idioma.
+ */
+  translate(key: string, params?: Object): string {
+    let value: string = undefined;
+    this.translateService.get(key, params).subscribe((trlValue) => {
+      value = trlValue;
+    }, (error) => {
+      console.error(JSON.stringify(error));
     }
+      , () => {
+        value = value == key ? undefined : value;
+      })
+    return value;
+  }
 
   /**
    * M&eacute;todo que valida si el dispositivo tiene red a internet.
@@ -79,32 +79,32 @@ export class UtilitiesProvider {
     }
   }
 
-    /**
-   * M&eacute;todo que valida que no haya campos nulos.
-   * @param value Campo a validar
-   */
-     isNull(value): any {
-      const valAux = JSON.stringify(value);
-      return (value === null
-        || value === undefined
-        || value === ""
-        || value === " "
-        || value === {}
-        || value === []
-        || value === "null"
-        || value === "undefined"
-        || valAux === "null"
-        || valAux === "{}"
-        || valAux === "[]"
-      )
-    }
+  /**
+ * M&eacute;todo que valida que no haya campos nulos.
+ * @param value Campo a validar
+ */
+  isNull(value): any {
+    const valAux = JSON.stringify(value);
+    return (value === null
+      || value === undefined
+      || value === ""
+      || value === " "
+      || value === {}
+      || value === []
+      || value === "null"
+      || value === "undefined"
+      || valAux === "null"
+      || valAux === "{}"
+      || valAux === "[]"
+    )
+  }
 
-      /**
-   * M&eacute;todo que muestra el componente Loading
-   * con el mensaje que recibe como par&aacute;metro
-   * @param defaultMessage Mensaje que se mostrará en en caso de no encontrar la clave
-   * @param messageKey Clave para traducir el mansaje al idioma de la app
-   */
+  /**
+* M&eacute;todo que muestra el componente Loading
+* con el mensaje que recibe como par&aacute;metro
+* @param defaultMessage Mensaje que se mostrará en en caso de no encontrar la clave
+* @param messageKey Clave para traducir el mansaje al idioma de la app
+*/
   showLoader(defaultMessage: string, messageKey?: string): void {
     let message: string;
     if (messageKey) {
@@ -122,7 +122,7 @@ export class UtilitiesProvider {
   /**
    * M&eacute;todo que oculta el Loader.
    */
-   hideLoader(onSuccess?: any) {
+  hideLoader(onSuccess?: any) {
     if (this.loading) {
       this.loading.dismiss().then(() => {
         if (onSuccess)
@@ -140,31 +140,31 @@ export class UtilitiesProvider {
     }
   }
 
-    /**
-   * Muestra un mensaje al usuario por medio de Toast(mensaje r&aacute;pido)
-   * @param defaultMessage Mensaje por defecto en caso de no encontrar la clave de traducci&oacute;n
-   * @param translateKey Clave del mensaje pra traducci&oacute;n
-   * @param duration Duraci&oacute;n del mensaje por defecto es 2000 ms
-   * @param position Posici&oacute;n del mensaje, por defecto se muestra en el centro
-   */
-     public showMessage(defaultMessage: string, translateKey?: string, duration?: string, position?: string, params?: Object): void {
-      let time: string = undefined == duration ? '2000' : duration;
-      let pos = undefined == position ? 'center' : position;
-      let message: string = "";//this.translate(translateKey);
-      if (translateKey != undefined && null != translateKey && "" != translateKey) {
-        message = this.translate(translateKey, params);
-      }
-      this.toast.show(message ? message : defaultMessage, time, pos).subscribe(
-        toast => {
-        }, error => {
-          console.error("No se puede mostrar Toast:" + JSON.stringify(error));
-        }
-      );
+  /**
+ * Muestra un mensaje al usuario por medio de Toast(mensaje r&aacute;pido)
+ * @param defaultMessage Mensaje por defecto en caso de no encontrar la clave de traducci&oacute;n
+ * @param translateKey Clave del mensaje pra traducci&oacute;n
+ * @param duration Duraci&oacute;n del mensaje por defecto es 2000 ms
+ * @param position Posici&oacute;n del mensaje, por defecto se muestra en el centro
+ */
+  public showMessage(defaultMessage: string, translateKey?: string, duration?: string, position?: string, params?: Object): void {
+    let time: string = undefined == duration ? '2000' : duration;
+    let pos = undefined == position ? 'center' : position;
+    let message: string = "";//this.translate(translateKey);
+    if (translateKey != undefined && null != translateKey && "" != translateKey) {
+      message = this.translate(translateKey, params);
     }
+    this.toast.show(message ? message : defaultMessage, time, pos).subscribe(
+      toast => {
+      }, error => {
+        console.error("No se puede mostrar Toast:" + JSON.stringify(error));
+      }
+    );
+  }
 
-      /*
-   *M&eacute;todo para mostrar un alerta basica
-   */
+  /*
+*M&eacute;todo para mostrar un alerta basica
+*/
   showBasicAlert(title, subTitle, buttonMessage, buttonAction?) {
     const alert = this.alertCtrl.create({
       title: title,
@@ -189,34 +189,34 @@ export class UtilitiesProvider {
     }, 120000);
   }
 
-    /**
- * M&eacute;todo para darle formato al error
- * @param className : Nombre de la case donde el metodo es invocado
- * @param methodName : Nombre del método en el cual se invovca
- * @param message : mensaje del error que se originio
- * @param service : PATH del servicio que se  intentó ejecutar y caus&oacute; el problema
- * @param alertTitle : Titulo del mensaje de alerta que se mostrar&aacute;
- * @param alertMessage: Mensaje a mostrar al usuario.
- */
-     createError(className, methodName, message, service, alertTitle, alertMessage) {
+  /**
+* M&eacute;todo para darle formato al error
+* @param className : Nombre de la case donde el metodo es invocado
+* @param methodName : Nombre del método en el cual se invovca
+* @param message : mensaje del error que se originio
+* @param service : PATH del servicio que se  intentó ejecutar y caus&oacute; el problema
+* @param alertTitle : Titulo del mensaje de alerta que se mostrar&aacute;
+* @param alertMessage: Mensaje a mostrar al usuario.
+*/
+  createError(className, methodName, message, service, alertTitle, alertMessage) {
 
-      var date: string = new Date().toLocaleDateString();
-      var hours = new Date().getUTCHours() - 5;
-      var minutes = new Date().getUTCMinutes();
-      var seconds = new Date().getUTCMilliseconds();
-      var hour = hours + ":" + minutes + ":" + seconds;
-      this.dataError.class = className;
-      this.dataError.method = methodName;
-      this.dataError.message = message;
-      this.dataError.date = date;
-      this.dataError.hour = hour;
-      this.writeFile(this.dataError, false, service, message, alertTitle, alertMessage)
-    }
-  
+    var date: string = new Date().toLocaleDateString();
+    var hours = new Date().getUTCHours() - 5;
+    var minutes = new Date().getUTCMinutes();
+    var seconds = new Date().getUTCMilliseconds();
+    var hour = hours + ":" + minutes + ":" + seconds;
+    this.dataError.class = className;
+    this.dataError.method = methodName;
+    this.dataError.message = message;
+    this.dataError.date = date;
+    this.dataError.hour = hour;
+    this.writeFile(this.dataError, false, service, message, alertTitle, alertMessage)
+  }
+
   /** 
    * M&eacute;todo para validar si enviar el log por correo.
    */
-   validateSendEmail(service: string, messageError: any, alertTitle: string, alertMessage: string) {
+  validateSendEmail(service: string, messageError: any, alertTitle: string, alertMessage: string) {
 
     var serviceUrl = localStorage.getItem("serviceStorage");
     var error = localStorage.getItem("messageErrorStorage");
@@ -238,33 +238,33 @@ export class UtilitiesProvider {
     }
   }
 
-    /** 
-    * M&eacute;todo para escribir en un archivo que va a servir como log
-    * @param message mensaje del error que se originio
-    * @param replace
-    * @param service PATH del servicio que se  indescenató ejecutar y caus&oacute; el problema
-    * @param messageError Mensaje del error que se originio
-    * @param alertTitle Titulo del mensaje de alerta que se mostrar&aacute;
-    * @param alertMessage Mensaje a mostrar al usuario.
-    */
-     public writeFile(message: any, replace: boolean, service: string, messageError: any, alertTitle: string, alertMessage: string) {
-      if (replace == true && message == null) {
-        this.file.createFile(this.file.externalRootDirectory, ConstantsProvider.LOG_FILE, true).then((f) => {
-          console.log(f);
-          this.info(this.CLASS_NAME, 'Init', '<Init log file>');
-        });
-      } else {
-        this.error(message.class, message.method, message.message);
-        if (alertMessage != "") {
-          this.validateSendEmail(service, messageError, alertTitle, alertMessage);
-        }
+  /** 
+  * M&eacute;todo para escribir en un archivo que va a servir como log
+  * @param message mensaje del error que se originio
+  * @param replace
+  * @param service PATH del servicio que se  indescenató ejecutar y caus&oacute; el problema
+  * @param messageError Mensaje del error que se originio
+  * @param alertTitle Titulo del mensaje de alerta que se mostrar&aacute;
+  * @param alertMessage Mensaje a mostrar al usuario.
+  */
+  public writeFile(message: any, replace: boolean, service: string, messageError: any, alertTitle: string, alertMessage: string) {
+    if (replace == true && message == null) {
+      this.file.createFile(this.file.externalRootDirectory, ConstantsProvider.LOG_FILE, true).then((f) => {
+        console.log(f);
+        this.info(this.CLASS_NAME, 'Init', '<Init log file>');
+      });
+    } else {
+      this.error(message.class, message.method, message.message);
+      if (alertMessage != "") {
+        this.validateSendEmail(service, messageError, alertTitle, alertMessage);
       }
     }
+  }
 
   /**
    * M&eacute;todo para enviar el archivo a un correo.
    */
-   sendEmail() {
+  sendEmail() {
     let email = {
       to: ['emmanuel.chavez.condor@gmail.com', 'lacc@virket.com', 'nelr@virket.com'],
       attachments: [
@@ -280,7 +280,7 @@ export class UtilitiesProvider {
   /**
    * M&eacute;todo que envía una alerta para validar que se envie el correo.
    */
-   alertConfirm(alertMessage) {
+  alertConfirm(alertMessage) {
     var message;
     var acept;
     var cancel;
@@ -340,27 +340,27 @@ export class UtilitiesProvider {
     }
   }
 
-    /**
-   * Obtiene la fecha actual del sistema, en formato YYYY-MM-DD HH-MM-SS
-   * @param onlyDate Valor de solo fecha para transformar a string
-   */
-     getDateString(onlyDate?: boolean) {
-      let f = new Date();
-      let month = this.validDataDate((f.getMonth() + 1));
-      let day = this.validDataDate(f.getDate());
-      let hours = this.validDataDate(f.getHours());
-      let minutes = this.validDataDate(f.getMinutes());
-      let seconds = this.validDataDate(f.getSeconds());
-      if (onlyDate)
-        return f.getFullYear() + "-" + month + "-" + day;
-      else
-        return f.getFullYear() + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;;
-    }
+  /**
+ * Obtiene la fecha actual del sistema, en formato YYYY-MM-DD HH-MM-SS
+ * @param onlyDate Valor de solo fecha para transformar a string
+ */
+  getDateString(onlyDate?: boolean) {
+    let f = new Date();
+    let month = this.validDataDate((f.getMonth() + 1));
+    let day = this.validDataDate(f.getDate());
+    let hours = this.validDataDate(f.getHours());
+    let minutes = this.validDataDate(f.getMinutes());
+    let seconds = this.validDataDate(f.getSeconds());
+    if (onlyDate)
+      return f.getFullYear() + "-" + month + "-" + day;
+    else
+      return f.getFullYear() + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;;
+  }
 
-      /**
-   * M&eacute;todo para agregar un cero a la izquierda a los valores menores a 10.
-   * @param val Fecha a validar
-   */
+  /**
+* M&eacute;todo para agregar un cero a la izquierda a los valores menores a 10.
+* @param val Fecha a validar
+*/
   validDataDate(val) {
     if (val < 10) {
       return "0" + val;
@@ -369,20 +369,44 @@ export class UtilitiesProvider {
     }
   }
 
-    /**
-   * M&eacute;todo que genera un modal en pantalla
-   * @param name nombre de la pagina que fungira como modal
-   * @param data objeto de datos que se enviaran al modal
-   * @param success funci&oacute;n que se ejecutara al cerrar modal(devuelve datos si así se desea)
-   */
-     createModal(name: string, data: any, success?: any, options?: any) {
-      let modal = this.modal.create(name, data, options);
-      modal.onDidDismiss(data => {
-        if (data)
-          success(data);
-      });
-  
-      modal.present();
-    }
+  /**
+ * M&eacute;todo que genera un modal en pantalla
+ * @param name nombre de la pagina que fungira como modal
+ * @param data objeto de datos que se enviaran al modal
+ * @param success funci&oacute;n que se ejecutara al cerrar modal(devuelve datos si así se desea)
+ */
+  createModal(name: string, data: any, success?: any, options?: any) {
+    let modal = this.modal.create(name, data, options);
+    modal.onDidDismiss(data => {
+      if (data)
+        success(data);
+    });
 
+    modal.present();
+  }
+
+/**
+ * Metodo que transforma una URL de una imagen a base64
+ * @param url Direccion URL de la imagen
+ * @param outputFormat formato de salida de la imagen
+ * @returns 
+ */
+  convertToDataURLviaCanvas(url: string, outputFormat: string){
+    return new Promise((resolve, reject) => {      
+    let img = new Image();
+    img.crossOrigin = 'Anonymous';
+    img.onload = () => {
+      let canvas = <HTMLCanvasElement> document.createElement('CANVAS'),
+        ctx = canvas.getContext('2d'),
+        dataURL;
+      canvas.height = img.height;
+      canvas.width = img.width;
+      ctx.drawImage(img, 0, 0);
+      dataURL = canvas.toDataURL(outputFormat);
+      resolve(dataURL);
+      canvas = null;
+    };
+    img.src = url;
+  });
+}
 }

@@ -10,18 +10,22 @@
     <ion-icon color="icon-color-1" name="back_button_custom"></ion-icon>
   </button>
 
-  <button ion-button icon-only clear item-end>
-    <ion-icon color="icon-color-1" name="shopping_cart_custom"></ion-icon>
+  <button class="cart-btn" ion-button icon-only clear item-end>
+    <ion-badge class="cart-badge" *ngIf="this.shoppingCartList.data.products.length > 0">
+      {{this.shoppingCartList.data.products.length}}
+    </ion-badge>
+    <ion-icon style="font-size: 30px;" color="icon-color-1" name="shopping_cart_custom">      
+    </ion-icon>
   </button>
 </ion-item>
 </ion-header>
 
 <ion-content style="padding: 16px 0px;">
 <ion-grid fixed>
-  <ion-row style="white-space: normal; height: 180px;">
-    <ion-col col-12 style="height: 100px;">
+  <ion-row style="white-space: normal; height: 270px;">
+    <ion-col col-12>
       <ion-item no-lines class="item-product_img">
-        <img [src]="product.product_image">
+        <img [src]="product.product_image" [style.width]="!isBigPicture ? 60 : 40">
       </ion-item>
     </ion-col>
   </ion-row>
@@ -58,14 +62,15 @@
 </ion-grid>
 
 <ion-fab bottom left>
-  <button class="button-text" ion-fab style="background-color: #FFFFFF;">
+  <button class="button-text" ion-fab style="background-color: #FFFFFF;" (click)="addFavorite(product.is_favorite)">
     <ion-icon [name]="product.is_favorite ? 'favorite_custom' : 'favorite_border_custom'"
     [color]="product.is_favorite ? 'icon-color-4' : 'icon-color-2'"></ion-icon>
   </button>
 </ion-fab>  
 
       <ion-fab bottom right>
-          <button class="button-text" ion-button style="width: 88%; height: 50px;" color="primary">
+          <button class="button-text" ion-button style="width: 88%; height: 50px;" color="primary"
+          (click)="this.addToCart(product, colorSelected)">
             <ion-icon item-start name="add_cart_custom"></ion-icon>            
             {{'ADD_CART' | translate}}            
           </button>
@@ -75,18 +80,33 @@
         <ion-row class="card-footer-prod-detail">
           <ion-col no-padding>
             <ion-card>    
-              <ion-card-header>
+              <ion-card-header style="padding-top: 0;">
+                <!--ion-item no-lines no-padding style="height: 0px;"-->
                 <ion-list>
-                    <ion-list-header no-padding style="border: 0;">
-                      <ion-label>{{'COLORS' | translate}}</ion-label>
+                    <ion-list-header no-margin no-padding style="border: 0;">
+                      <ion-label class="card-details-sections-text" no-margin>{{'COLORS' | translate}}</ion-label>
                     </ion-list-header>
-                    <ion-row radio-group>
-                      <ion-col no-padding col- *ngFor="let color of product.colors; let i = index">
-                        <ion-radio [style.background-color]="color.hex" 
-                        value="color.name"></ion-radio>
+
+                    <ion-row radio-group style="max-width: 100%; width: 50%;">
+                      <ion-col no-padding *ngFor="let color of product.colors; let i = index">
+                        <ion-radio [style.background-color]="color.hex" class="card-details-radio" 
+                        value="{{color.name}}" (ionSelect)="onColorChange(color.name)"></ion-radio>
                       </ion-col>
                     </ion-row>
+
+                    <ion-row>
+                      <ion-col col-12 style="height: 70px;">
+                        <ion-label class="card-details-sections-text" no-margin>{{'DESCRIPTION' | translate}}</ion-label>
+                      </ion-col>
+                    </ion-row>
+    
+                      <ion-row style="overflow: hidden; overflow-y: auto;">
+                        <ion-col col-12>
+                          <ion-label class="card-details-text" no-margin>{{product.description}}</ion-label>
+                        </ion-col>
+                      </ion-row>
                 </ion-list>
+              <!--/ion-item-->
               </ion-card-header>          
             </ion-card> 
           </ion-col>

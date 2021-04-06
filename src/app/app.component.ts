@@ -10,16 +10,36 @@ import { UtilitiesProvider } from '../providers/utilities/utilities';
 })
 export class MyApp {
   rootPage: any = 'WelcomeTutorialPage';
+  isFirtsTimeOpenApp: boolean = false;
   @ViewChild(Nav) nav: Nav;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
     private translate: TranslateService,
     private utilities: UtilitiesProvider) {
     platform.ready().then(() => {
+      platform.pause.subscribe(() => {
+        if (this.utilities.isNull(localStorage.getItem('isFirtsTimeOpenApp'))) {
+          this.isFirtsTimeOpenApp = true;          
+        } else {
+          this.isFirtsTimeOpenApp = false;
+        }
+        localStorage.clear();
+        localStorage.setItem('isFirtsTimeOpenApp', String(this.isFirtsTimeOpenApp));
+      });
+
+      platform.registerBackButtonAction(() =>{
+        if (this.utilities.isNull(localStorage.getItem('isFirtsTimeOpenApp'))) {
+          this.isFirtsTimeOpenApp = true;          
+        } else {
+          this.isFirtsTimeOpenApp = false;
+        }
+        localStorage.clear();
+        localStorage.setItem('isFirtsTimeOpenApp', String(this.isFirtsTimeOpenApp));
+        return;
+      });
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();      
       splashScreen.hide();  
-      localStorage.clear();    
       this.initTranslate(null);
     });
   }
@@ -30,7 +50,6 @@ export class MyApp {
    * @param language Lenguaje a usar en la app
    */
   initTranslate(language: string) {
-    let isFirtsTimeOpenApp: boolean = false;
     if(language == null){
       if (this.utilities.isNull(localStorage.getItem('language'))) {
         language = 'es';
@@ -42,17 +61,17 @@ export class MyApp {
       }
 
       if (this.utilities.isNull(localStorage.getItem('isFirtsTimeOpenApp'))) {
-        isFirtsTimeOpenApp = true;
-        localStorage.setItem('isFirtsTimeOpenApp', String(isFirtsTimeOpenApp));
+        this.isFirtsTimeOpenApp = true;
+        localStorage.setItem('isFirtsTimeOpenApp', String(this.isFirtsTimeOpenApp));
       } else {
-        isFirtsTimeOpenApp = false;
-        localStorage.setItem('isFirtsTimeOpenApp', String(isFirtsTimeOpenApp));
+        this.isFirtsTimeOpenApp = false;
+        localStorage.setItem('isFirtsTimeOpenApp', String(this.isFirtsTimeOpenApp));
       }
 
-      if (isFirtsTimeOpenApp) {
+      if (this.isFirtsTimeOpenApp) {
         this.nav.setRoot(this.rootPage);
       } else {
-        this.nav.setRoot('HomePage');
+        this.nav.setRoot('TabsPage');
       }
       
     }
