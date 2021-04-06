@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.virket.box.test.shopping.cart" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.virket.box.test.shopping.cart" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>ShoppingCartTest</name>
     <description>Test app for virket box vacancy challenge</description>
     <author email="emmanuel.chavez.condor@gmail.com">Prueba Emmanuel Chavez</author>
