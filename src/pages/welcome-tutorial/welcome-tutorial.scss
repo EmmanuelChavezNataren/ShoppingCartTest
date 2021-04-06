@@ -1,0 +1,36 @@
+page-welcome-tutorial {
+  ion-header {
+    height: 40%;
+    background-color: map-get($colors, background-color-1);
+    ion-navbar {
+      div.toolbar-background {
+        background-image: url(../../assets/imgs/logo.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+      }
+    }
+  }
+
+  .header-md::after,
+  .tabs-md[tabsPlacement="top"] > .tabbar::after,
+  .footer-md::before,
+  .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+    background-image: url(main.css) !important;
+  }
+
+  .toolbar-background-md {
+    border-color: transparent;
+    background: transparent;
+}
+
+.welcomeMessage {
+    font-family: 'Raleway';
+    font-size: 18px;
+    line-height: 21px;
+    white-space: pre-wrap !important;
+    color: map-get($colors, text-color-2) !important;
+    margin: 0;
+    
+}
+}

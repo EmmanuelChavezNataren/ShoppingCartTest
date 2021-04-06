@@ -1,0 +1,26 @@
+{
+    "NETWORK_ERROR": "Conexión inestable",
+    "NETWORK_MESSAGE": "Por favor revisa tu conexión a internet e intentalo de nuevo.",
+    "BUTTON_OK": "Aceptar",
+    "BUTTON_CANCEL": "Cancelar",
+    "WELCOME_HEADER": "Encuentra los mejores audífonos",
+    "WELCOME_MESSAGE": "Busca y adquiere los mejores audífonos de las mejores marcas al alcance de tu móvil",
+    "BUTTON_START": "Comenzar",
+    "LOADING_MESSAGE": "Cargando...",
+    "LOG_SUBJECT": "Archivo de Errores",
+    "LOG_MESSAGE": "Se envía el archivo de errores adjunto",
+    "SEND_EMAIL": "¿Desea enviar el error a soporte?",
+    "WELCOME_LBL": "Bienvenido",
+    "BIDDING_OF_DAY_LBL": "Ofertas del dia",
+    "DISCOVER_LBL": "Descubre",
+    "SHOPPING_CART_LBL": "Carrito de compras",
+    "PROCEED_PAYMENT":"Proceder al pago",
+    "INFO_PAYMENT": "Información del pago",
+    "SUBTOTAL": "Subtotal",
+    "SHIPPING": "Costo de envío",
+    "TOTAL": "Total",
+    "REVIEWS": "Reseñas",
+    "ADD_CART": "Agregar al carrito",
+    "COLORS": "Colores"
+
+}

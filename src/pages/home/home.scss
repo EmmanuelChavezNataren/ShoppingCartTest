@@ -1,0 +1,46 @@
+page-home {
+  ion-header {
+    height: 10%; 
+    font-size: 0 !important;
+    ion-toolbar {
+      height: 10%;
+      div.toolbar-background {
+        background-color: map-get($colors, background-color-1) !important;
+      }
+
+      div.toolbar-content{
+        background-color: map-get($colors, background-color-1) !important;
+      }
+    }
+    ion-item.item{
+      background-color: map-get($colors, background-color-1) !important;
+      font-size: 0 !important;
+    }
+  }
+
+  .header-md::after,
+  .tabs-md[tabsPlacement="top"] > .tabbar::after,
+  .footer-md::before,
+  .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+    background-image: url(main.css) !important;
+  }
+
+  .user-profile {
+    font-family: "Raleway";
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    color: map-get($colors, text-color-2);
+  }
+
+  .user-profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .scroll-content {
+    margin-top: 0 !important;
+  }
+
+}

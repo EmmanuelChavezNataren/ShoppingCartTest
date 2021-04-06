@@ -1,0 +1,107 @@
+brands {
+  .card-discover {
+    margin: -47px 0px;
+    border-radius: 20px;
+    width: 175px;
+    height: 174px;
+    white-space: normal;
+    box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+    background-color: map-get($colors, text-color-7);
+  }
+
+  .card-discover-col {
+    padding: 0px 8px;
+    height: 190px;
+  }
+
+  .card-header-discover {
+    margin-top: 0;
+    padding: 5px 0px 16px 16px;
+  }
+
+  .card-discover-brand-title {
+    font-family: "Poppins";
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 15px;
+    color: map-get($colors, text-color-3);
+    padding: 0;
+    margin: 0;
+    white-space: pre-wrap;
+  }
+
+  .card-header-discover-prod-name-title {
+    font-weight: 500;
+    line-height: 18px;
+    color: map-get($colors, text-color-1);
+    padding: 0;
+    margin: 0;
+  }
+
+  .card-header-discover ion-item div.item-inner {
+    padding: 0 !important;
+    div {
+      ion-label {
+        margin-right: 0 !important;
+      }
+    }
+  }
+
+  .card-header-discover {
+    ion-fab {
+      top: 0;
+      width: 25px;
+      height: 25px;
+      button {
+        width: 25px;
+        height: 25px;
+        bottom: 0px;
+        box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0), 0 4px 5px rgba(0, 0, 0, 0);
+      }
+    }
+  }
+
+  .card-footer-discover {
+    position: absolute;
+    bottom: 15%;
+    width: 100%;
+  }
+
+  .card-discover-content-item {
+    background-image: url(../../assets/imgs/polygon.png);
+    background-position: center;
+    background-size: 80px;
+    background-repeat: no-repeat;
+    height: 80px;
+    bottom: 10px;
+  }
+
+  .card-discover-content-item img {
+    transform: rotate(25deg);
+    max-width: 38%;
+  }
+
+  .card-discover-content-item div div ion-label {
+    text-align: -webkit-center;
+  }
+
+  .card-footer-discover ion-col[col-5] {
+    padding-left: 9px;
+    top: 8px;
+    button {
+      width: 56px;
+      height: 44px;
+      border-radius: 20px 0px;
+    }
+  }
+
+  .card-footer-discover ion-col[col-7] {
+    top: 16px;
+  }
+
+
+  .ionic3-star-rating{
+    padding-left: 12px;
+    line-height: 0px;
+  }
+}

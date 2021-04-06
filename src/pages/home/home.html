@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar> 
+      <ion-item no-lines>
+        <ion-avatar class="user-profile-avatar" item-start>
+          <img [src]="this.userData.data.picture.large" />
+        </ion-avatar>
+        <ion-label class="user-profile">{{'WELCOME_LBL' | translate}}, {{this.userData.data.fullName}}</ion-label>
+        <button ion-button clear icon-only item-end>
+          <ion-icon color="icon-color-1" name="search_custom"></ion-icon>
+        </button>
+      </ion-item>      
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding> 
+  <ion-grid fixed no-padding>
+    <ion-row class="title-section">
+      <ion-col>
+        <ion-label no-margin padding-top>{{'BIDDING_OF_DAY_LBL' | translate}}          
+        </ion-label>  
+      </ion-col>      
+    </ion-row>
+  </ion-grid> 
+  
+  <ion-grid fixed no-padding>
+    <ion-row class="title-section">
+      <ion-col>
+        <ion-label no-margin padding-top>{{'DISCOVER_LBL' | translate}}          
+        </ion-label>
+      </ion-col>      
+    </ion-row>
+
+    <brands [productsList]="this.productsList" [isPageHome]="true">
+    </brands>
+
+  </ion-grid>  
+  
+</ion-content>

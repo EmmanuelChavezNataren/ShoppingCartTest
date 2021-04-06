@@ -1,0 +1,95 @@
+<!--
+  Generated template for the ProductDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="height: 40px;">
+<ion-item no-lines no-margin style="background-color: transparent; bottom: 17px;">
+  <button ion-button icon-only clear item-start (click)="closeModal()">
+    <ion-icon color="icon-color-1" name="back_button_custom"></ion-icon>
+  </button>
+
+  <button ion-button icon-only clear item-end>
+    <ion-icon color="icon-color-1" name="shopping_cart_custom"></ion-icon>
+  </button>
+</ion-item>
+</ion-header>
+
+<ion-content style="padding: 16px 0px;">
+<ion-grid fixed>
+  <ion-row style="white-space: normal; height: 180px;">
+    <ion-col col-12 style="height: 100px;">
+      <ion-item no-lines class="item-product_img">
+        <img [src]="product.product_image">
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-9 style="height: 90px;">
+      <ion-label class="title-product-detail">{{product.product_name}}</ion-label>
+    </ion-col>
+    <ion-col col-3 style="height: 90px; text-align: -webkit-center;">
+      <ion-label class="title-brand-detail">{{product.brand.toLocaleUpperCase()}}</ion-label>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-4>
+      <ionic3-star-rating #rating
+                    activeIcon = "star_custom"
+                    defaultIcon = "star_border_custom"
+                    activeColor = "#FFD056" 
+                    defaultColor = "#FFD056"
+                    readonly="true"
+                    [rating]="product.score"
+                    fontSize = "16px">
+                  </ionic3-star-rating>
+    </ion-col>
+    <ion-col col-3 style="align-self: center; padding: 5px 0px;">
+      <ion-label class="title-brand-detail" style="font-size: 14px !important; text-align: center; margin: 0;">
+        {{product.reviews}} {{'REVIEWS' | translate}}</ion-label>
+    </ion-col>
+    <ion-col col-5>
+      <ion-label class="product-price-in-product-detail col-product-price">{{product.product_price | currency}}</ion-label>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-fab bottom left>
+  <button class="button-text" ion-fab style="background-color: #FFFFFF;">
+    <ion-icon [name]="product.is_favorite ? 'favorite_custom' : 'favorite_border_custom'"
+    [color]="product.is_favorite ? 'icon-color-4' : 'icon-color-2'"></ion-icon>
+  </button>
+</ion-fab>  
+
+      <ion-fab bottom right>
+          <button class="button-text" ion-button style="width: 88%; height: 50px;" color="primary">
+            <ion-icon item-start name="add_cart_custom"></ion-icon>            
+            {{'ADD_CART' | translate}}            
+          </button>
+        </ion-fab>  
+
+
+        <ion-row class="card-footer-prod-detail">
+          <ion-col no-padding>
+            <ion-card>    
+              <ion-card-header>
+                <ion-list>
+                    <ion-list-header no-padding style="border: 0;">
+                      <ion-label>{{'COLORS' | translate}}</ion-label>
+                    </ion-list-header>
+                    <ion-row radio-group>
+                      <ion-col no-padding col- *ngFor="let color of product.colors; let i = index">
+                        <ion-radio [style.background-color]="color.hex" 
+                        value="color.name"></ion-radio>
+                      </ion-col>
+                    </ion-row>
+                </ion-list>
+              </ion-card-header>          
+            </ion-card> 
+          </ion-col>
+        </ion-row>
+        
+</ion-content>

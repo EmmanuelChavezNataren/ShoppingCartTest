@@ -1,0 +1,60 @@
+page-product-detail-modal {
+  .header-product-detail {
+    height: 40px;
+  }
+
+  .item-product_img {
+    background-image: url(../../assets/imgs/polygon.png);
+    background-position: center;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    bottom: 35%;
+  }
+
+  .item-product_img img {
+    transform: rotate(25deg);
+    max-width: 50%;
+  }
+
+  .item-product_img div div ion-label {
+    text-align: -webkit-center;
+  }
+
+  ion-content {
+    div.fixed-content {
+      margin-top: 40px !important;
+    }
+
+    div.scroll-content {
+      margin-top: 40px !important;
+      padding: 16px 0px;
+    }
+  }
+
+  .col-product-price{
+    color: map-get($colors, primary );
+    text-align: end;
+  }
+
+  .title-brand-detail {
+    margin-top: 70%;
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 20px;
+    color: map-get($colors, text-color-3 );    
+  }
+
+  .card-footer-prod-detail {
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+  }
+
+  .card-footer-prod-detail ion-card {
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    border-radius: 50px 50px 0px 0px;
+  }
+}

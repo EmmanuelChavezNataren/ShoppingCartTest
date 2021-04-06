@@ -1,0 +1,87 @@
+<!--
+  Generated template for the ShoppingCartPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content class="shopping-cart-content" style="padding: 16px 0px;">
+  <ion-grid fixed no-padding>
+    <ion-row class="title-section">
+      <ion-col style="padding: 0px 16px !important;">
+        <ion-label class="title-section-shopping-card" no-margin padding-top>{{'SHOPPING_CART_LBL' | translate}}          
+        </ion-label>
+      </ion-col>      
+    </ion-row>
+
+    <ion-row style="position: relative; bottom: 30px;">
+      <ion-col col-12 style="padding: 0px 10px !important;">
+        <ion-list>
+          <ion-item class="card-shopping-cart-item" no-lines no-padding
+          *ngFor="let productShoppingCart of this.shoppingCartList.data.products; let i = index;">
+            <ion-card class="card-shopping-cart">
+              <ion-card-content no-padding>
+                <ion-row>
+                  <ion-col class="card-shopping-card-prod-img" col-2>
+                    <img [src]="productShoppingCart.product_image" /> 
+                  </ion-col>
+
+                  <ion-col col-5 no-padding style="align-self: center;">
+                    <p class="title-product-name card-shopping-prod-name-title">{{productShoppingCart.product_name}}</p>
+                    <p class="card-shopping-color-title">{{productShoppingCart.color.name}}</p>
+                  </ion-col>
+
+                  <ion-col col-4 no-padding style="align-self: center;">
+                    <p class="product-price">{{productShoppingCart.product_price | currency}}</p>
+                  </ion-col>
+
+                  <ion-col col-1 style="padding: 10px 0px;">
+                    <button ion-button icon-only clear>
+                      <ion-icon color="icon-color-2" name="do_disturb_custom"></ion-icon>
+                    </button>
+                  </ion-col>
+
+                </ion-row>
+              </ion-card-content>            
+            </ion-card>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="card-footer-shopping-cart">
+      <ion-col>
+        <ion-card *ngIf="isOpenInfoPayment">
+          <ion-fab center top>
+            <button style="width: 100%;" ion-button icon-only clear>
+              <ion-icon style="width: 100%; height: 100%;" color="icon-color-2" name="expand_more_custom"></ion-icon>
+            </button>
+          </ion-fab> 
+
+          <ion-card-header class="shopping-cart-info-pay-header">
+            <ion-card-title class="shopping-cart-info-pay-text">{{'INFO_PAYMENT' | translate}}</ion-card-title>
+
+            <ion-item>
+              <ion-label class="shopping-cart-info-pay-subtext" no-margin item-start>{{'SUBTOTAL' | translate}}</ion-label>
+              <ion-label class="shopping-cart-info-pay-amounts" no-margin item-end>{{this.shoppingCartList.data.subtotal | currency}}</ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label class="shopping-cart-info-pay-subtext" no-margin item-start>{{'SHIPPING' | translate}}</ion-label>
+              <ion-label class="shopping-cart-info-pay-amounts" no-margin item-end>{{this.shoppingCartList.data.shipping | currency}}</ion-label>
+            </ion-item>
+            
+            <ion-item no-lines>
+              <ion-label no-margin item-start class="shopping-cart-info-pay-text" style="padding: 0px !important;">{{'TOTAL' | translate}}</ion-label>
+              <ion-label class="shopping-cart-info-pay-amounts" no-margin item-end>{{this.shoppingCartList.data.subtotal | currency}}</ion-label>
+            </ion-item>
+          </ion-card-header>          
+        </ion-card>   
+        <ion-fab class="proceed-payment" center bottom>
+          <button class="button-text" ion-button color="primary" style="width: 100%;">
+            {{'PROCEED_PAYMENT' | translate}}
+          </button>
+        </ion-fab>   
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
+</ion-content>

@@ -1,0 +1,11 @@
+<ion-tabs [selectedIndex]="tabIndex" #tabsShoppingCart>
+  <ion-tab [root]="home" tabIcon="explore_custom" (ionSelect)="tabIndex=0"></ion-tab>
+  <ion-fab center bottom>
+    <button ion-fab color="primary" (click)="rootShoppingCart(1)">
+      <ion-icon name="shopping_cart_custom"></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-tab [root]="shoppingCart" tabIcon="" tabTitle="" (ionSelect)="tabIndex=1">     
+  </ion-tab>  
+  <ion-tab [root]="filter" tabIcon="list_custom" (ionSelect)="tabIndex=2"></ion-tab>
+</ion-tabs>

@@ -1,0 +1,255 @@
+// http://ionicframework.com/docs/theming/
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+@font-face {
+  font-family: "Raleway";
+  src: url("../assets/fonts/Raleway/static/Raleway-Regular.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Raleway-Bold";
+  src: url("../assets/fonts/Raleway/static/Raleway-Bold.ttf");
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url("../assets/fonts/Poppins/Poppins-Medium.ttf");
+  font-style: medim;
+}
+
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url("../assets/fonts/Poppins/Poppins-Bold.ttf");
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins/Poppins-Regular.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+
+.title-on-boarding {
+  font-family: "Raleway-Bold";
+  font-size: 35px;
+  white-space: pre-wrap !important;
+  line-height: 41px;
+  color: map-get($colors, text-color-2) !important;
+  margin-top: 41px !important;
+  margin: 0;
+}
+
+.title-product-detail {
+  font-family: "Poppins-Medium";
+  font-size: 40px;
+  white-space: pre-wrap !important;
+  line-height: 46px;
+}
+
+.title-section {
+  font-size: 0px;
+  height: 10px;
+}
+
+.title-section .label {
+  font-family: "Poppins-Medium";
+  font-size: 24px;
+  white-space: pre-wrap !important;
+  color: map-get($colors, text-color-2);
+}
+
+.product-price-in-product-detail {
+  font-family: "Poppins-Bold";
+  font-size: 22px;
+  white-space: pre-wrap !important;
+}
+
+.product-price {
+  font-family: "Poppins-Bold";
+  font-size: 14px;
+  white-space: pre-wrap !important;
+  padding-left: 16px;
+  margin: 0;
+}
+
+.title-product-name {
+  font-family: "Poppins-Medium";
+  font-size: 12px;
+  white-space: pre-wrap !important;
+}
+
+.button-text {
+  font-family: "Relaway-Bold";
+  color: map-get($colors, text-colors-7);
+  border-radius: 50px;
+  font-size: 18px !important;
+}
+
+button {
+  text-transform: none !important;
+}
+
+body > * {
+  white-space: pre-wrap !important;
+}
+button {
+  white-space: pre-wrap !important;
+}
+
+img {
+  &[class*="logo_icon_custom"] {
+    content: url(../assets/imgs/logo_icon.png);
+  }
+
+  &[class*="logo_custom"] {
+    content: url(../assets/imgs/logo.png);
+  }
+
+  &[class*="welcome_custom"] {
+    content: url(../assets/imgs/welcome.png);
+  }
+
+  &[class*="polygon_custom"] {
+    content: url(../assets/imgs/polygon.png);
+  }
+}
+
+ion-icon {
+  &[class*="_custom"] {
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    width: 1em;
+    height: 1em;
+  }
+
+  &[class*="add_custom"] {
+    mask-image: url(../assets/icon/add.svg);
+  }
+  &[class*="add_cart_custom"] {
+    mask-image: url(../assets/icon/add_shopping_cart.svg);
+  }
+  &[class*="back_button_custom"] {
+    mask-image: url(../assets/icon/back_button.svg);
+  }
+  &[class*="do_disturb_custom"] {
+    mask-image: url(../assets/icon/do_disturb.svg);
+  }
+  &[class*="expand_more_custom"] {
+    mask-image: url(../assets/icon/expand_more.svg);
+  }
+  &[class*="explore_custom"] {
+    mask-image: url(../assets/icon/explore.svg);
+  }
+  &[class*="favorite_custom"] {
+    mask-image: url(../assets/icon/favorite.svg);
+  }
+  &[class*="favorite_border_custom"] {
+    mask-image: url(../assets/icon/favorite_border.svg);
+  }
+  &[class*="list_custom"] {
+    mask-image: url(../assets/icon/list.svg);
+  }
+  &[class*="search_custom"] {
+    mask-image: url(../assets/icon/search.svg);
+  }
+  &[class*="shopping_cart_custom"] {
+    mask-image: url(../assets/icon/shopping_cart.svg);
+  }
+  &[class*="star_custom"] {
+    mask-image: url(../assets/icon/star.svg);
+  }
+  &[class*="star_border_custom"] {
+    mask-image: url(../assets/icon/star_border.svg);
+  }
+}
+
+ion-content {
+  background-color: map-get($colors, background-color-1) !important;
+}
+
+.is-favorite-disabled {
+  background-color: map-get($colors, icon-color-2) !important;
+}
+
+.is-favorite {
+  background-color: map-get($colors, icon-color-4) !important;
+}
+
+.item-md {
+  color: map-get($colors, text-color-2);
+}
+
+.item {
+  color: map-get($colors, text-color-2);
+}
+
+.item p {
+  color: map-get($colors, text-color-2);
+}
+
+.item-md p {
+  color: map-get($colors, text-color-2);
+}
+
+.card-title-md {
+  color: map-get($colors, text-color-2);
+}
+
+.ios .modal-fullscreen {
+  .modal-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.modal-fullscreen {
+  .modal-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+
+  .toolbar-background {
+    background-color: map-get($colors, background-color-1) !important;
+  }
+  .toolbar-content {
+    background-color: map-get($colors, background-color-1) !important;
+  }
+
+  .header {
+    background-color: map-get($colors, background-color-1) !important;
+  }
+
+  .header::after {
+    background-image: url(main.css) !important;
+  }
+
+}

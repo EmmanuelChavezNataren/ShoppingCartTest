@@ -1,0 +1,11 @@
+page-tabs {
+    .tabs-md .tabbar {
+    background: #FFFFFF;
+    box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 20px 20px 0px 0px;
+    }
+
+    ion-fab[bottom] {
+        bottom: 0px;
+    }
+}

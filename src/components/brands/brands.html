@@ -1,0 +1,59 @@
+<!-- Generated template for the BrandsComponent component -->
+<ion-row>
+  <ion-col col-12>
+    <ion-list>                                
+      <ion-row>
+        <ion-col class="card-discover-col" col-6 *ngFor="let product of this.productsList.data; let i = index;">
+          <ion-card class="card-discover" (click)="getProductDetail(product)"> 
+            <ion-card-header class="card-header-discover">
+              <ion-item no-lines no-padding style="height: 0px;">
+                <ion-row>
+                  <ion-col col-10>
+                    <ion-card-title class="card-discover-brand-title">{{product.brand.toLocaleUpperCase()}}</ion-card-title>                        
+                    <ion-card-title class="title-product-name card-header-discover-prod-name-title">{{product.product_name}}</ion-card-title>                      
+                  </ion-col>
+                  <ion-col col-2 style="align-self: center;">
+                    <ion-fab right top>
+                      <button ion-fab [class.is-favorite-disabled]="!product.is_favorite"
+                      [class.is-favorite]="product.is_favorite" (click)="addFavorite(product.is_favorite, i)">
+                        <ion-icon name="favorite_custom"></ion-icon>
+                      </button>
+                    </ion-fab>
+                  </ion-col>
+                </ion-row>                                                                
+              </ion-item>                                    
+            </ion-card-header>
+            
+
+            <ion-card-content>
+              <ion-item class="card-discover-content-item" no-lines no-padding>  
+                <img [src]="product.product_image" />                  
+              </ion-item>
+            </ion-card-content>
+
+            <ion-row class="card-footer-discover">
+              <ion-col col-7>
+                  <ion-label class="product-price">{{product.product_price | currency}}</ion-label>
+                  <ionic3-star-rating #rating
+                    activeIcon = "star_custom"
+                    defaultIcon = "star_border_custom"
+                    activeColor = "#FFD056" 
+                    defaultColor = "#FFD056"
+                    readonly="true"
+                    [rating]="product.score"
+                    fontSize = "12px">
+                  </ionic3-star-rating>
+              </ion-col>
+
+              <ion-col col-5 *ngIf="isPageHome">
+                <button ion-button (click)="openAddCart(i)">
+                  <ion-icon name="add_custom"></ion-icon>
+                </button>
+              </ion-col>
+          </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>        
+    </ion-list>
+  </ion-col>
+</ion-row>
