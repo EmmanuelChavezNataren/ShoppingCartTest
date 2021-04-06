@@ -24,6 +24,12 @@
     "COLORS": "Colores",
     "DESCRIPTION": "Descripción",
     "ADD_CART_MESSAGE": "Producto agregado correctamente",
-    "DISCOUNT": "Descuento"
+    "DISCOUNT": "Descuento",
+    "ADD_FAVORITES": "Agregar a favoritos",
+    "YES": "Si",
+    "NO": "No",
+    "CONFIRM_TITLE": "Confirmación",
+    "CONFIRM_MESSAGE_DEL": "¿Estas seguro de quitar este elemento?",
+    "EMPTY_SHOPPING_CART": "Carrito de compras vacío"
 
 }

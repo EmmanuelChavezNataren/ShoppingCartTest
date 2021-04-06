@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
+import { ArrayObservable } from 'rxjs/observable/ArrayObservable';
 import { Cart } from '../../dto/request-response/cart-dto';
 import { Product } from '../../dto/request-response/product-dto';
 import { User } from '../../dto/request-response/user-dto';
@@ -18,6 +19,7 @@ export class HomePage {
   public userData: User = new User();
   public productsList: Product = new Product();
   public shoppingCartList: Cart = new Cart();
+  public isOpenAddCartList: Array<boolean>;
 
   constructor(public navCtrl: NavController,
     private services: ServicesProvider,
@@ -50,6 +52,7 @@ export class HomePage {
       let results = await Promise.all(promises);
       this.userData = results[0] as User;
       this.productsList = results[1] as Product;
+      this.isOpenAddCartList = new Array<boolean>(this.productsList.data.length).fill(false);
       this.utilities.hideLoader();
     } catch (_err) {
       this.utilities.hideLoader(() => {

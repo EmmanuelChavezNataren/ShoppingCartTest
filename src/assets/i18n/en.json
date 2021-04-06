@@ -20,9 +20,15 @@
     "SHIPPING": "Shipping",
     "TOTAL": "Total",
     "REVIEWS": "Reviews",
-    "ADD_CART": "Agregar al carrito",
+    "ADD_CART": "Add to cart",
     "COLORS": "Colors",
     "DESCRIPTION": "Description",
     "ADD_CART_MESSAGE": "Product added successfully",
-    "DISCOUNT": "Discpunt"
+    "DISCOUNT": "Discpunt",
+    "ADD_FAVORITES": "Add to favorites",
+    "YES": "Yes",
+    "NO": "No",
+    "CONFIRM_TITLE": "Confirm",
+    "CONFIRM_MESSAGE_DEL": "Are you sure to remove this item?",
+    "EMPTY_SHOPPING_CART": "Empty shopping cart"
 }

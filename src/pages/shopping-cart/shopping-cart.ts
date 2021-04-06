@@ -41,6 +41,7 @@ export class ShoppingCartPage {
     } else {
       this.init();
     }
+    this.isOpenInfoPayment = true;
   }
 
   ionViewDidLeave() {
@@ -52,7 +53,6 @@ export class ShoppingCartPage {
     let promises: any = [
       this.api.getShoppingCart()
     ];
-
     try {
       let results = await Promise.all(promises);
       this.shoppingCartList = results[0] as Cart;
@@ -75,6 +75,10 @@ export class ShoppingCartPage {
    * Total: Pago total aplicando el descuento
    */
   calculateAmounts() {
+    this.subtotal = 0;
+    this.shipping = 0;
+    this.discount = 0;
+    this.total = 0;
     this.shoppingCartList.data.products.forEach((product: ProductData) => {
       this.subtotal = this.subtotal + +product.product_price;
       if(!this.utilities.isNull(product.discount) && +product.discount > 0){
@@ -83,7 +87,35 @@ export class ShoppingCartPage {
     });
     let subtotalCalShipping: number = Math.trunc((this.subtotal / 500));
     this.shipping = 25 * subtotalCalShipping;
-    this.total = (this.subtotal + this.shipping) - this.discount;
+    this.total = (this.subtotal + this.shipping) - this.discount;        
+
+  }
+
+  /**
+   * Establece el valor a la bandera de isOpenInfoPayment
+   * @param isOpenInfoPayment 
+   */
+  setIsOpenInfoPayment(isOpenInfoPayment: boolean){
+    this.isOpenInfoPayment = isOpenInfoPayment;
+  }
+
+  /**
+   * M&eacute;todo que elimina un producto de la lista del carrito de compras
+   * @param index indice a eliminar
+   */
+  deleteProduct(index: number){
+    this.utilities.confirmAlert(
+      this.utilities.translate('CONFIRM_TITLE'),
+      this.utilities.translate('CONFIRM_MESSAGE_DEL'),
+       () => {
+        this.utilities.showLoader(ConstantsProvider.DEFAULT_MESSAGE_LOADING, this.utilities.translate('LOADING_MESSAGE'));                
+        this.shoppingCartList.data.products.splice(index, 1);
+        console.log("this.shoppingCartList " + JSON.stringify(this.shoppingCartList));
+        localStorage.setItem('shoppingCartList', JSON.stringify(this.shoppingCartList));
+        this.calculateAmounts();  
+        this.utilities.hideLoader();               
+      }
+    );
 
   }
 

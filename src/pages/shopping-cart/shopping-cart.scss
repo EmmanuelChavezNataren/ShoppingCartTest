@@ -64,8 +64,7 @@ page-shopping-cart {
     font-size: smaller;
   }
 
-  .proceed-payment {
-    bottom: 30px !important;
+  .proceed-payment {    
     left: 0% !important;
     margin-left: auto;
     margin-right: auto;
@@ -122,8 +121,35 @@ page-shopping-cart {
     overflow-x: hidden;
     overflow-y: auto;
     height: 310px;
-    ion-item.item{
+    ion-item.item {
       background-color: map-get($colors, background-color-1) !important;
+    }
+  }
+
+  .item-show-info-paymenet {
+    bottom: 40px;
+    background-color: transparent;
+    border: 0;
+    text-align: center;
+  }
+
+  .item-show-info-payment {
+    background-color: transparent;
+    top: 170px;
+    padding: 0px 48px !important;
+
+    ion-label {
+      font-family: 'Raleway';
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      color: map-get($colors, text-color-3);
+      display: inline-flex;
+    }
+
+    ion-icon{
+      transform: rotate(180deg);
+      font-size: 30px;
     }
   }
 }

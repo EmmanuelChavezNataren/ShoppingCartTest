@@ -99,9 +99,81 @@ brands {
     top: 16px;
   }
 
-
-  .ionic3-star-rating{
+  .ionic3-star-rating {
     padding-left: 12px;
     line-height: 0px;
+  }
+
+  .expand_button_header {
+    height: 50% !important;
+    padding: 0 !important;
+
+    .expand_button_ion-fab {
+      width: 30px;
+      height: 30px;
+      top: 35px;
+
+      span{
+        margin: 0px !important;
+      }
+      button {
+        background-color: map-get($colors, background-color-1) !important;
+        width: 30px !important;
+        height: 30px !important;
+        padding: 0;
+        bottom: 100% !important;
+      }
+
+      ion-icon[class*="expand_more_custom"] {
+        font-size: 35px;
+      }
+    }
+
+    .button_add_favorite {
+      background-color: transparent !important;
+      color: map-get($colors, primary) !important;
+      margin: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      border-top-left-radius: 20px !important;
+      border-top-right-radius: 20px !important;
+      padding: 0 !important;
+
+      span{
+          font-family: 'Poppins';
+          font-weight: 300 !important;
+          font-size: 12px;
+          line-height: 18px; 
+          margin-top: 10px;
+          white-space: normal;       
+      }
+    }
+  }
+
+  .expand_button_content {
+    height: 50%;
+
+    button {
+      margin: 0;
+      height: 100%;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      padding: 0;
+
+      .button-inner {
+        flex-flow: column;
+        .icon {
+          margin-bottom: 10px;
+          font-size: 2em;
+        }
+      }
+
+      span{
+        font-family: 'Poppins';
+        font-weight: 300 !important;
+        font-size: 12px;
+        line-height: 18px;
+      }
+    }
   }
 }

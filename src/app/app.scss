@@ -252,4 +252,17 @@ ion-content {
     background-image: url(main.css) !important;
   }
 
+  .toast-container{
+    background: #323232;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.toast-md .toast-message{
+    font-family: 'Poppins';
+    font-size: 14px;
+    line-height: 20px;
+    color: map-get($colors, text-color-4 );
+}
+
 }

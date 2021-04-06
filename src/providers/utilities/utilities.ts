@@ -409,4 +409,33 @@ export class UtilitiesProvider {
     img.src = url;
   });
 }
+
+/**
+ * M&eacute;todo que muestra un mensaje de confirmación
+ * @param title titulo del mensaje
+ * @param message mensaje a mostrar al usuario
+ * @param onSucces Accion a ejecutar cuando se activa el boton yes
+ */
+ confirmAlert(title: string,message: string,  onSucces?: any){
+  let alert = this.alertCtrl.create({
+    title: title,
+    message: message,
+    buttons: [
+      {
+        text: this.translate("NO"),
+        role: this.translate("NO"),
+        handler: () => { }
+      },
+      {
+        text: this.translate("YES"),
+        handler: () => {
+          if(onSucces) onSucces();
+        }
+      }
+    ],
+    enableBackdropDismiss: false
+  });
+  alert.present();
+}
+
 }

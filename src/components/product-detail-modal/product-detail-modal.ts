@@ -55,6 +55,12 @@ export class ProductDetailModalPage {
     }
   }
 
+  /**
+ * M&eacute;todo que se encarga de agregar un producto al carrito de compras
+ * @param product Objecto de tipo ProductData Que tiene la informaci&oacute;n del producto a agregar
+ * @param colorSelected Color seleccionado, campo opcional si viene vacio
+ * toma el color de la posici&oacute;n [0] del Array de tipo Colors
+ */
   addToCart(product: ProductData, colorSelected?: string){
     this.api.addCart(product, colorSelected).then((shoppingCart: Cart) => {
       this.shoppingCartList = shoppingCart;
